@@ -1,0 +1,1 @@
+INSERT INTO PLANETA(NOME, CLIMA, TERRENO, QTD_APARICOES_FILMES) VALUES('Alderaan', 'temperate', 'grasslands, mountains', 2);
