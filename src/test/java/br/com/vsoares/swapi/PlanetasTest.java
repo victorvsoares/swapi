@@ -35,6 +35,7 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 
 import br.com.vsoares.swapi.model.Planeta;
 import br.com.vsoares.swapi.repository.PlanetaRepository;
+import br.com.vsoares.swapi.request.PlanetaRequest;
 
 
 @RunWith(SpringRunner.class)
@@ -61,7 +62,7 @@ public class PlanetasTest {
 	@Test
     public void adicionar_planeta_sucesso() throws Exception {
         
-		Planeta yavinIV = new Planeta("Yavin IV", "temperate, tropical", "jungle, rainforests", 0);
+		PlanetaRequest yavinIV = new PlanetaRequest("Yavin IV", "temperate, tropical", "jungle, rainforests");
 			
 		ResultActions result = mockMvc.perform(post("/planetas")
 									  .contentType(APPLICATION_JSON_UTF8_VALUE)
@@ -84,7 +85,7 @@ public class PlanetasTest {
 	@Test
     public void adicionar_planeta_existente() throws Exception {
         
-		Planeta alderaan = new Planeta("Alderaan", "temperate", "grasslands, mountains", 0);
+		PlanetaRequest alderaan = new PlanetaRequest("Alderaan", "temperate", "grasslands, mountains");
 			
 		mockMvc.perform(post("/planetas")
 			   .contentType(APPLICATION_JSON_UTF8_VALUE)
@@ -97,7 +98,7 @@ public class PlanetasTest {
 	@Test
     public void adicionar_planeta_inexistente_api() throws Exception {
         
-		Planeta alderaan = new Planeta("Marte", "temperate", "grasslands, mountains", 0);
+		PlanetaRequest alderaan = new PlanetaRequest("Marte", "temperate", "grasslands, mountains");
 			
 		mockMvc.perform(post("/planetas")
 			   .contentType(APPLICATION_JSON_UTF8_VALUE)
@@ -110,7 +111,7 @@ public class PlanetasTest {
 	@Test
     public void adicionar_planeta_sem_campos_obrigatorios() throws Exception {
         
-		Planeta alderaan = new Planeta(null, null, null, 0);
+		PlanetaRequest alderaan = new PlanetaRequest(null, null, null);
 			
 		mockMvc.perform(post("/planetas")
 			   .contentType(APPLICATION_JSON_UTF8_VALUE)
