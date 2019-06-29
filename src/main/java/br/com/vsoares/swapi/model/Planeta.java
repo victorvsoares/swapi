@@ -1,5 +1,6 @@
 package br.com.vsoares.swapi.model;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static javax.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.NONE;
 import static lombok.AccessLevel.PACKAGE;
@@ -13,6 +14,8 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -33,6 +36,7 @@ public class Planeta {
 	@GeneratedValue(strategy = IDENTITY)
 	@Setter(NONE)
 	@Column(name = "ID")
+	@JsonInclude(NON_NULL)
 	private Integer id;
 
 	@Column(name = "NOME", nullable = false, length = 150)

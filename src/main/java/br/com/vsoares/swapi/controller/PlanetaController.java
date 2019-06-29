@@ -26,6 +26,7 @@ import br.com.vsoares.swapi.client.SWApi;
 import br.com.vsoares.swapi.controller.exception.RecursoNaoEncontradoException;
 import br.com.vsoares.swapi.model.Planeta;
 import br.com.vsoares.swapi.repository.PlanetaRepository;
+import br.com.vsoares.swapi.request.PlanetaRequest;
 import br.com.vsoares.swapi.service.PlanetaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -49,8 +50,8 @@ public class PlanetaController {
 	@ApiOperation(value = "Adiciona um novo planeta")
 	@PostMapping
 	@ResponseStatus(value = CREATED)
-	public ResponseEntity<?> adicionar(@RequestBody @Valid Planeta planeta, UriComponentsBuilder ucBuilder) {
-		Planeta usuario = planetaService.salvar(planeta);		
+	public ResponseEntity<?> adicionar(@RequestBody @Valid PlanetaRequest planetaRequest, UriComponentsBuilder ucBuilder) {
+		Planeta usuario = planetaService.salvar(planetaRequest.toPlaneta());		
 		return ResponseEntity.created(ucBuilder.path("/planetas/{id}").buildAndExpand(usuario.getId()).toUri()).build();
 	}
 	
