@@ -22,7 +22,7 @@ public class SWApi {
 	@Autowired
 	private SWApiClient client;
 
-	@Cacheable(cacheNames="SWAPI", keyGenerator="cacheKeyGenerator")
+	@Cacheable(cacheNames = "SWAPI", keyGenerator = "cacheKeyGenerator")
 	public Optional<Planeta> findPlaneta(String nome) {
 		
 		SWApiResult result = client.findPlanet(nome);
@@ -38,7 +38,7 @@ public class SWApi {
 
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@Cacheable(cacheNames="SWAPI", keyGenerator="cacheKeyGenerator")
+	@Cacheable(cacheNames = "SWAPI", keyGenerator = "cacheKeyGenerator")
 	public Page<Planeta> findAllPlanets(int page) {
 		
 		SWApiResult result = client.findAllPlanets(page + 1);
