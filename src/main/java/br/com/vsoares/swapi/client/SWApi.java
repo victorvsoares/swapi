@@ -8,7 +8,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -22,7 +21,6 @@ public class SWApi {
 	@Autowired
 	private SWApiClient client;
 
-	@Cacheable(cacheNames = "SWAPI", keyGenerator = "cacheKeyGenerator")
 	public Optional<Planeta> findPlaneta(String nome) {
 		
 		SWApiResult result = client.findPlanet(nome);
@@ -38,7 +36,6 @@ public class SWApi {
 
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@Cacheable(cacheNames = "SWAPI", keyGenerator = "cacheKeyGenerator")
 	public Page<Planeta> findAllPlanets(int page) {
 		
 		SWApiResult result = client.findAllPlanets(page + 1);
